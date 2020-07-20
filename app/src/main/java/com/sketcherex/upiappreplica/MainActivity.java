@@ -11,6 +11,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
+import com.sketcherex.upiappreplica.Activities.SampleActivity;
 
 import java.util.ArrayList;
 
@@ -29,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
             // already signed in
+            startActivity(new Intent(MainActivity.this, SampleActivity.class));
+
+
         } else {
             // not signed in
             startPhoneVerification();
@@ -54,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
             IdpResponse response = IdpResponse.fromResultIntent(data);
             if (resultCode==RESULT_OK){
 
-                //TODO add next activity
-//                startActivity();
+                startActivity(new Intent(MainActivity.this, SampleActivity.class));
                 showToast("Sign in succesfull!");
                 finish();
             }
